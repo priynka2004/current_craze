@@ -22,7 +22,7 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
 
   int pageNo = 1;
 
-  Future paginationListener() async {
+  Future listener() async {
     _pagingController.addPageRequestListener((pageKey) {
       pageNo = pageKey;
       fetchNews(pageKey);
@@ -32,7 +32,7 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
   @override
   void initState() {
     newsProvider = Provider.of<NewsProvider>(context, listen: false);
-    paginationListener();
+    listener();
     super.initState();
   }
 
@@ -158,6 +158,11 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
                       ],
                     ),
                   ),
+                );
+              },
+              noItemsFoundIndicatorBuilder: (context) {
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
               },
             ),
