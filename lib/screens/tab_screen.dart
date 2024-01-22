@@ -75,14 +75,6 @@ class TabScreenState extends State<TabScreen>
                         builder: (context) => const SearchNewsScreen()));
               },
               icon: const Icon(Icons.search)),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.file_copy),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.person_outline),
-          ),
         ],
       ),
       body: TabBarView(

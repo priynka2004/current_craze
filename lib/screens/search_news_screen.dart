@@ -162,7 +162,7 @@ class SearchNewsScreenState extends State<SearchNewsScreen> {
               },
               noItemsFoundIndicatorBuilder: (context) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(), 
                 );
               },
             ),
