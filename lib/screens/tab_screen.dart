@@ -1,6 +1,7 @@
 import 'package:current_craze/model/news_info_model.dart';
 import 'package:current_craze/provider/news_provider.dart';
 import 'package:current_craze/screens/news_category_screen.dart';
+import 'package:current_craze/screens/search_news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -16,7 +17,8 @@ class TabScreen extends StatefulWidget {
 class TabScreenState extends State<TabScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  final PagingController<int, Articles> pagingController = PagingController(firstPageKey: 1);
+  final PagingController<int, Articles> pagingController =
+      PagingController(firstPageKey: 1);
   NewsProvider? newsProvider;
   int pageSize = 10;
 
@@ -64,16 +66,20 @@ class TabScreenState extends State<TabScreen>
           ],
           labelColor: Colors.black,
         ),
-         actions: const [
-         Padding(
-           padding: EdgeInsets.all(8.0),
-           child: Icon(Icons.search),
-         ),
-          Padding(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchNewsScreen()));
+              },
+              icon: const Icon(Icons.search)),
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Icon(Icons.file_copy),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Icon(Icons.person_outline),
           ),
@@ -92,7 +98,7 @@ class TabScreenState extends State<TabScreen>
             category: 'Entertainment',
           ),
           NewsCategoryScreen(
-            category:'Health',
+            category: 'Health',
           ),
           NewsCategoryScreen(
             category: 'Science',
@@ -107,5 +113,4 @@ class TabScreenState extends State<TabScreen>
       ),
     );
   }
-
 }
