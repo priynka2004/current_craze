@@ -33,6 +33,19 @@ class _NewsDetailScreenState extends State<NewsDetailScreen> {
                 widget.articles.urlToImage.toString(),
                 height: 200,
                 width: double.infinity,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 150,
+                    color: Colors.grey,
+                    child: const Center(
+                      child: Icon(
+                        Icons.image_not_supported,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                    ),
+                  );
+                },
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 20),

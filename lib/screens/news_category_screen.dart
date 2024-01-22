@@ -89,6 +89,19 @@ class NewsCategoryScreenState extends State<NewsCategoryScreen> {
                           ),
                           child: Image.network(
                             article.urlToImage.toString(),
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                height: 150,
+                                color: Colors.grey,
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.image_not_supported,
+                                    color: Colors.white,
+                                    size: 50,
+                                  ),
+                                ),
+                              );
+                            },
                             fit: BoxFit.cover,
                           ),
                         ),
