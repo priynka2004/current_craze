@@ -11,6 +11,7 @@ class NewsApiService {
   static Future<List<Articles>> fetchNews({
     required int pageKey,
     required String query,
+    String language = 'en',
   }) async {
     if (kDebugMode) {
       print('FetchingNews category=$query');
@@ -22,6 +23,7 @@ class NewsApiService {
       sortBy: 'publishedAt',
       page: pageKey,
       pageSize: pageSize,
+      language: language,
     );
 
     final response = await http.get(Uri.parse(url));
